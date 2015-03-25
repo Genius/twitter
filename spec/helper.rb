@@ -78,3 +78,11 @@ def capture_warning
   end
   result
 end
+
+class Object
+  unless method_defined?(:public_send)
+    def public_send(method, *args, &block)
+      __send__(method, *args, &block)
+    end
+  end
+end
